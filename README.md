@@ -1,1 +1,1 @@
-# goit-react-hw-03-image-finder
+goit-react-hw-03 ===> Life cycle of a component. Working with REST API (part second - image finder)
