@@ -1,14 +1,14 @@
 import { Component } from 'react';
-import { PropTypes } from 'prop-types';
-import { FiSearch } from 'react-icons/fi';
 import SearchbarStyle from './Searchbar.module.css';
+import { FiSearch } from 'react-icons/fi';
+import { PropTypes } from 'prop-types';
 
-export class Serchbar extends Component {
+export class Searchbar extends Component {
   state = {
     value: '',
   };
 
-  handleSubmit = event => {
+  hanleSubmit = event => {
     event.preventDefault();
     this.props.onSubmit(this.state.value);
     this.setState({ value: '' });
@@ -21,21 +21,21 @@ export class Serchbar extends Component {
   render() {
     return (
       <header className={SearchbarStyle.searchbar}>
-        <form className={SearchbarStyle.form} onSubmit={this.handleSubmit}>
-          <button type="submit" className={SearchbarStyle.button}>
-            <span className={SearchbarStyle.buttonLabel}>
+        <form className={SearchbarStyle.searchForm} onSubmit={this.hanleSubmit}>
+          <button type="submit" className={SearchbarStyle.searchFormButton}>
+            <span className={SearchbarStyle.searchFormButtonLabel}>
               <FiSearch />
             </span>
           </button>
 
           <input
-            className={SearchbarStyle.input}
+            className={SearchbarStyle.searchFormInput}
             type="text"
             name="value"
+            autoComplete="off"
+            autoFocus
             value={this.state.value}
             onChange={this.handleChange}
-            autocomplete="off"
-            autofocus
             placeholder="Search images and photos"
           />
         </form>
@@ -44,6 +44,6 @@ export class Serchbar extends Component {
   }
 }
 
-Serchbar.PropTypes = {
+Searchbar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };

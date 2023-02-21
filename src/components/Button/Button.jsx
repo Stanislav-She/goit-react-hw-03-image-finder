@@ -1,14 +1,14 @@
-import { PropTypes } from 'prop-types';
-import ButtonStyle from './ButtonStyle.module.css';
+import ButtonStyle from './Button.module.css';
+import PropTypes from 'prop-types';
 
-export const Button = ({ onclick }) => {
+export const Button = ({ onClick }) => {
   return (
-    <button type="button" className={ButtonStyle.button} onClick={onclick}>
+    <button className={ButtonStyle.button} onClick={onClick} type="button">
       Load more
     </button>
   );
 };
 
-Button.prototype = {
+Button.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
