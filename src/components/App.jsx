@@ -31,7 +31,9 @@ export class App extends Component {
     return (
       <main>
         <Serchbar onSubmit={this.handleSubmit} />
-        {/* <Modal onClose={this.toggleModal} currentImage={currentImage} /> */}
+        {isOpenModal && (
+          <Modal onClose={this.toggleModal} currentImage={currentImage} />
+        )}
       </main>
     );
   }
