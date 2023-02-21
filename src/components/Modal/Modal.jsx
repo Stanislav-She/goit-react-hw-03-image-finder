@@ -4,20 +4,20 @@ import ModalStyle from './Modal.module.css';
 
 export class Modal extends Component {
   componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyCloseModal);
+    window.addEventListener('keydown', this.handleKeyModalClose);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyCloseModal);
+    window.removeEventListener('keydown', this.handleKeyModalClose);
   }
 
-  handleKeyCloseModal = event => {
+  handleKeyModalClose = event => {
     if (event.code === 'Escape') {
       this.props.onClose();
     }
   };
 
-  handleClickBackdrop = event => {
+  handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
       this.props.onClose();
     }
@@ -25,12 +25,12 @@ export class Modal extends Component {
 
   render() {
     return (
-      <div className={ModalStyle.overlay}>
+      <div className={ModalStyle.overlay} onClick={this.handleBackdropClick}>
         <div className={ModalStyle.modal}>
           <img
-            className={ModalStyle.image}
+            className={ModalStyle.modalImage}
             src={this.props.currentImage}
-            alt=""
+            alt="lalala"
           />
         </div>
       </div>

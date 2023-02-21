@@ -1,11 +1,12 @@
 import { Component } from 'react';
-import { Serchbar } from './Searchbar/Searchbar';
+import { Searchbar } from './Searchbar';
+import { ImageGallery } from './ImageGallery';
 import { Modal } from './Modal/Modal';
 
 export class App extends Component {
   state = {
     isOpenModal: false,
-    searchValue: 'lighthous',
+    searchValue: 'wave',
     currentImage: null,
   };
 
@@ -30,7 +31,8 @@ export class App extends Component {
     const { isOpenModal, currentImage } = this.state;
     return (
       <main>
-        <Serchbar onSubmit={this.handleSubmit} />
+        <Searchbar onSubmit={this.handleSubmit} />
+        <ImageGallery value={this.state.searchValue} onClick={this.openModal} />
         {isOpenModal && (
           <Modal onClose={this.toggleModal} currentImage={currentImage} />
         )}
