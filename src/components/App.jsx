@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Serchbar } from './Searchbar/Searchbar';
+import { Modal } from './Modal/Modal';
 
 export class App extends Component {
   state = {
@@ -7,10 +8,31 @@ export class App extends Component {
     searchValue: 'lighthous',
     currentImage: null,
   };
-}
 
-// render() {
-//   return (
-//     <></>
-//   )
-// }
+  toggleModal = event => {
+    this.setState(prevState => ({
+      isOpenModal: !prevState.isOpenModal,
+    }));
+  };
+
+  openModal = largeImage => {
+    this.setState({
+      currentImage: largeImage,
+      isOpenModal: true,
+    });
+  };
+
+  handleSubmit = searchValue => {
+    this.setState({ searchValue });
+  };
+
+  render() {
+    const { isOpenModal, currentImage } = this.state;
+    return (
+      <main>
+        <Serchbar onSubmit={this.handleSubmit} />
+        {/* <Modal onClose={this.toggleModal} currentImage={currentImage} /> */}
+      </main>
+    );
+  }
+}
